@@ -11,7 +11,7 @@ set -ouex pipefail
 
 # this installs a package from fedora repos
 dnf5 install -y htop
-dnf5 install -y @gnome-desktop
+#dnf5 install -y @gnome-desktop
 
 # Use a COPR Example:
 #
