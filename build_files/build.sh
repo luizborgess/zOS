@@ -21,5 +21,5 @@ dnf5 install -y htop
 # dnf5 -y copr disable ublue-os/staging
 
 #### Example for enabling a System Unit File
-systemctl set-default graphical.target
+#systemctl set-default graphical.target
 systemctl enable podman.socket
