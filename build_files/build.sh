@@ -13,7 +13,6 @@ set -ouex pipefail
 FEDORA_PACKAGES=(
     htop
     fish
-    nerd-fonts
     fastfetch
     steam
     ptyxis
