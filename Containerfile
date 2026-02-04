@@ -4,7 +4,6 @@ COPY build_files /
 
 ## Add homebrew
 FROM ghcr.io/ublue-os/brew:latest AS brew
-COPY --from=brew /system_files /
 
 
 ## Other possible base images include:
@@ -28,7 +27,7 @@ COPY --from=brew /system_files /
 
 # Base Image
 FROM ghcr.io/ublue-os/silverblue-nvidia:43 as base
-
+COPY --from=brew /system_files /
 # RUN rm /opt && mkdir /opt
 
 ### MODIFICATIONS
