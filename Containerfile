@@ -23,6 +23,11 @@ FROM ghcr.io/ublue-os/silverblue-nvidia:43
 ## Uncomment the following line if one desires to make /opt immutable and be able to be used
 ## by the package manager.
 
+
+## Add homebrew
+FROM ghcr.io/ublue-os/brew:latest AS brew
+COPY --from=brew /system_files /
+
 # RUN rm /opt && mkdir /opt
 
 ### MODIFICATIONS

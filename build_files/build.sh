@@ -30,6 +30,9 @@ dnf -y install --enablerepo=docker-ce-stable \
     docker-compose-plugin \
     docker-model-plugin
 
+
+
+
 # this installs a package from fedora repos
 #dnf5 install -y htop
 #dnf5 install -y @gnome-desktop
@@ -45,3 +48,6 @@ dnf -y install --enablerepo=docker-ce-stable \
 #systemctl set-default graphical.target
 systemctl enable podman.socket
 systemctl enable docker.socket
+## Config homebrew services
+systemctl preset brew-setup.service
+systemctl preset brew-update.timer
