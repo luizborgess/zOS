@@ -28,6 +28,7 @@ FROM ghcr.io/ublue-os/brew:latest AS brew
 # Base Image
 FROM ghcr.io/ublue-os/silverblue-nvidia:43 as base
 COPY --from=brew /system_files /
+COPY system_files /
 # RUN rm /opt && mkdir /opt
 
 ### MODIFICATIONS
