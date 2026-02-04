@@ -13,6 +13,10 @@ set -ouex pipefail
 FEDORA_PACKAGES=(
     htop
     fish
+    nerd-fonts
+    fastfetch
+    steam
+    ptyxis
 )
 
 echo "Installing ${#FEDORA_PACKAGES[@]} packages from Fedora repos..."
@@ -29,8 +33,6 @@ dnf -y install --enablerepo=docker-ce-stable \
     docker-ce-cli \
     docker-compose-plugin \
     docker-model-plugin
-
-
 
 
 # this installs a package from fedora repos
