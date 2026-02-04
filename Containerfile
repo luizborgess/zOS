@@ -2,8 +2,10 @@
 FROM scratch AS ctx
 COPY build_files /
 
-# Base Image
-FROM ghcr.io/ublue-os/silverblue-nvidia:43
+## Add homebrew
+FROM ghcr.io/ublue-os/brew:latest AS brew
+COPY --from=brew /system_files /
+
 
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:latest
@@ -24,9 +26,8 @@ FROM ghcr.io/ublue-os/silverblue-nvidia:43
 ## by the package manager.
 
 
-## Add homebrew
-FROM ghcr.io/ublue-os/brew:latest AS brew
-COPY --from=brew /system_files /
+# Base Image
+FROM ghcr.io/ublue-os/silverblue-nvidia:43 as base
 
 # RUN rm /opt && mkdir /opt
 
