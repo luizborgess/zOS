@@ -9,6 +9,14 @@ set -ouex pipefail
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
+## Add Required packages:
+FEDORA_PACKAGES=(
+    htop
+    fish
+)
+
+echo "Installing ${#FEDORA_PACKAGES[@]} packages from Fedora repos..."
+dnf5 -y install "${FEDORA_PACKAGES[@]}"
 
 ## Add docker
 
@@ -36,3 +44,4 @@ dnf -y install --enablerepo=docker-ce-stable \
 #### Example for enabling a System Unit File
 #systemctl set-default graphical.target
 systemctl enable podman.socket
+systemctl enable docker.socket
