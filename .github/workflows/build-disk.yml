@@ -74,7 +74,7 @@ jobs:
         with:
           builder-image: ghcr.io/centos-workstation/bootc-image-builder:latest
           config-file: ./disk_config/iso.toml
-          image: ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}
+          image: ghcr.io/luizborgess/zos:latest
           chown: ${{ env.USER_UID }}:${{ env.USER_GID }}
           types: anaconda-iso
           additional-args: --use-librepo=True
