@@ -38,19 +38,22 @@ dnf -y install --enablerepo=docker-ce-stable \
     docker-model-plugin
 
 
-# this installs a package from fedora repos
-#dnf5 install -y htop
-#dnf5 install -y @gnome-desktop
+## Add vscode
+tee /etc/yum.repos.d/vscode.repo <<'EOF'
+[code]
+name=Visual Studio Code
+baseurl=https://packages.microsoft.com/yumrepos/vscode
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+EOF
+sed -i "s/enabled=.*/enabled=0/g" /etc/yum.repos.d/vscode.repo
+dnf -y install --enablerepo=code \
+    code
 
-# Use a COPR Example:
-#
-# dnf5 -y copr enable ublue-os/staging
-# dnf5 -y install package
-# Disable COPRs so they don't end up enabled on the final image:
-# dnf5 -y copr disable ublue-os/staging
 
-#### Example for enabling a System Unit File
-#systemctl set-default graphical.target
+
+#### enabling a System Unit File
 systemctl enable podman.socket
 systemctl enable docker.socket
 ## Config homebrew services
