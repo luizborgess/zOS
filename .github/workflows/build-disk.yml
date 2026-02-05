@@ -80,7 +80,7 @@ jobs:
       #     additional-args: --use-librepo=True
       - name: Build disk images
         id: build
-        uses: centos-workstation
+        uses: ublue-os/bootc-image-builder-action@main
         with:
           config-file: ./disk_config/iso.toml
           image: ghcr.io/luizborgess/zos:latest
