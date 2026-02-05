@@ -16,6 +16,10 @@ FEDORA_PACKAGES=(
     fastfetch
     steam
     ptyxis
+    #extensions
+    gnome-shell-extension-dash-to-dock
+    gnome-shell-extension-appindicator 
+    gnome-extensions-app
 )
 
 echo "Installing ${#FEDORA_PACKAGES[@]} packages from Fedora repos..."
