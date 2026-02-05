@@ -4,11 +4,6 @@ name: Build disk images
 on:
   workflow_dispatch:
     inputs:
-      upload-to-s3:
-        description: "Upload to S3"
-        required: false
-        default: false
-        type: boolean
       platform:
         required: true
         type: choice
@@ -79,14 +74,12 @@ jobs:
 
       - name: Build disk images
         id: build
-        uses: osbuild/bootc-image-builder-action@main
+        uses: ublue-os/bootc-image-builder-action@main
         with:
-          builder-image: ${{ env.BIB_IMAGE }}
-          config-file: ${{ matrix.disk-type == 'anaconda-iso' && './disk_config/iso.toml' || './disk_config/disk.toml' }}
-          image: ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}
-          chown: ${{ env.USER_UID }}:${{ env.USER_GID }}
-          types: ${{ matrix.disk-type }}
-          additional-args: --use-librepo=True
+          bootc-image-builder-image: ${{ env.BIB_IMAGE }}
+          use-librepo: true
+          config-file: ./disk_config/iso.toml
+          image: ${{ env.IMAGE_REGISTRY }}:${{ env.DEFAULT_TAG }}
 
       - name: Upload disk images and Checksum to Job Artifacts
         if: inputs.upload-to-s3 != true && github.event_name != 'pull_request'
@@ -97,19 +90,3 @@ jobs:
           retention-days: 0
           compression-level: 0
           overwrite: true
-      
-      # - name: Upload to S3
-      #   if: inputs.upload-to-s3 == true && github.event_name != 'pull_request'
-      #   shell: bash
-      #   env:
-      #     RCLONE_CONFIG_S3_TYPE: s3
-      #     RCLONE_CONFIG_S3_PROVIDER: ${{ secrets.S3_PROVIDER }}
-      #     RCLONE_CONFIG_S3_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
-      #     RCLONE_CONFIG_S3_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
-      #     RCLONE_CONFIG_S3_REGION: ${{ secrets.S3_REGION }}
-      #     RCLONE_CONFIG_S3_ENDPOINT: ${{ secrets.S3_ENDPOINT }}
-      #     SOURCE_DIR: ${{ steps.build.outputs.output-directory }}
-      #   run: |
-      #     sudo apt-get update
-      #     sudo apt-get install -y rclone
-      #     rclone copy $SOURCE_DIR S3:${{ secrets.S3_BUCKET_NAME }}
