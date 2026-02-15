@@ -18,8 +18,7 @@ FEDORA_PACKAGES=(
     ptyxis
     #extensions
     gnome-shell-extension-dash-to-dock
-    gnome-shell-extension-appindicator 
-    gnome-extensions-app
+    gnome-shell-extension-appindicator
 )
 
 echo "Installing ${#FEDORA_PACKAGES[@]} packages from Fedora repos..."
@@ -27,6 +26,7 @@ dnf -y install "${FEDORA_PACKAGES[@]}"
 
 ## Add docker
 
+sudo groupadd docker
 dnf config-manager addrepo --from-repofile=https://download.docker.com/linux/fedora/docker-ce.repo
 sed -i "s/enabled=.*/enabled=0/g" /etc/yum.repos.d/docker-ce.repo
 dnf -y install --enablerepo=docker-ce-stable \
