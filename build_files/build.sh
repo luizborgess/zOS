@@ -23,7 +23,7 @@ FEDORA_PACKAGES=(
 )
 
 echo "Installing ${#FEDORA_PACKAGES[@]} packages from Fedora repos..."
-dnf5 -y install "${FEDORA_PACKAGES[@]}"
+dnf -y install "${FEDORA_PACKAGES[@]}"
 
 ## Add docker
 
