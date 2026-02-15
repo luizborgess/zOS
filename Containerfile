@@ -26,7 +26,7 @@ FROM ghcr.io/ublue-os/brew:latest AS brew
 
 
 # Base Image
-FROM quay.io/centos-bootc/centos-bootc:c10s as base
+FROM ghcr.io/ublue-os/silverblue-nvidia:43 as base
 COPY --from=brew /system_files /
 COPY system_files /
 # RUN rm /opt && mkdir /opt
