@@ -52,8 +52,6 @@ dnf -y install --enablerepo=code \
     code
 
 ### Downgrades
-sudo dnf install wireplumber-0.5.10-1.fc43.x86_64
-sudo dnf versionlock add wireplumber
 
 
 
