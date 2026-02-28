@@ -17,7 +17,7 @@ FEDORA_PACKAGES=(
     steam
     ptyxis
     util-linux
-    ollama
+    btrfs-assistant
     #extensions
     gnome-shell-extension-dash-to-dock
     gnome-shell-extension-appindicator
