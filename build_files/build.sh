@@ -16,6 +16,7 @@ FEDORA_PACKAGES=(
     fastfetch
     steam
     ptyxis
+    util-linux
     #extensions
     gnome-shell-extension-dash-to-dock
     gnome-shell-extension-appindicator
