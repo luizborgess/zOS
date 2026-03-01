@@ -52,7 +52,9 @@ sed -i "s/enabled=.*/enabled=0/g" /etc/yum.repos.d/vscode.repo
 dnf -y install --enablerepo=code \
     code
 
-### Downgrades
+### Downgrade and cleanups
+dnf -y remove \
+    firefox 
 
 
 
