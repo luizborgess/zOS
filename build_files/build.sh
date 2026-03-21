@@ -11,6 +11,7 @@ set -ouex pipefail
 
 ## Add Required packages:
 FEDORA_PACKAGES=(
+    niri
     htop
     fish
     fastfetch
