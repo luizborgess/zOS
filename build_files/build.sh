@@ -22,7 +22,7 @@ FEDORA_PACKAGES=(
     gnome-shell-extension-dash-to-dock
     gnome-shell-extension-appindicator
     # Qemu Virt
-    mesa-utils
+    egl-utils
 )
 
 echo "Installing ${#FEDORA_PACKAGES[@]} packages from Fedora repos..."
