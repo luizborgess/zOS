@@ -11,7 +11,6 @@ set -ouex pipefail
 
 ## Add Required packages:
 FEDORA_PACKAGES=(
-    niri
     htop
     fish
     fastfetch
@@ -28,6 +27,11 @@ FEDORA_PACKAGES=(
 
 echo "Installing ${#FEDORA_PACKAGES[@]} packages from Fedora repos..."
 dnf -y install "${FEDORA_PACKAGES[@]}"
+
+## Add niri
+dnf -y install niri
+dnf -y install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+dnf -y install noctalia-shell
 
 ## Add docker
 
