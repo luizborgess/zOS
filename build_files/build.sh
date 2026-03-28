@@ -18,6 +18,7 @@ FEDORA_PACKAGES=(
     ptyxis
     util-linux
     btrfs-assistant
+    gcc
     #extensions
     gnome-shell-extension-dash-to-dock
     gnome-shell-extension-appindicator
@@ -32,9 +33,6 @@ dnf -y install "${FEDORA_PACKAGES[@]}"
 dnf -y install niri
 dnf -y install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 dnf -y install noctalia-shell
-
-## Add development tools
-sudo dnf install @development-tools
 
 
 ## Add docker
