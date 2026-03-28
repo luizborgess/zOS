@@ -33,6 +33,10 @@ dnf -y install niri
 dnf -y install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 dnf -y install noctalia-shell
 
+## Add development tools
+sudo dnf install @development-tools
+
+
 ## Add docker
 
 dnf config-manager addrepo --from-repofile=https://download.docker.com/linux/fedora/docker-ce.repo
