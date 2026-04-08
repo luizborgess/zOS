@@ -48,6 +48,8 @@ setup-cloudflare-dns:
 
     echo "Pronto! DNS da Cloudflare aplicado com sucesso."
 
+
+# Install Google Chrome as rpm istead of flatpak
 install-google-chrome-rpm:
     #!/usr/bin/bash
     sudo tee /etc/yum.repos.d/google-chrome.repo << 'EOF'
@@ -60,3 +62,4 @@ install-google-chrome-rpm:
     EOF
 
     rpm-ostree install google-chrome-stable
+    fc-cache -r -v

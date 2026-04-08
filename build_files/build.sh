@@ -62,8 +62,6 @@ dnf -y install --enablerepo=code \
     code
 
 ### Downgrade and cleanups
-dnf -y remove \
-    firefox 
 
 
 
