@@ -47,3 +47,16 @@ setup-cloudflare-dns:
     resolvectl flush-caches
 
     echo "Pronto! DNS da Cloudflare aplicado com sucesso."
+
+install-google-chrome-rpm:
+    #!/usr/bin/bash
+    sudo tee /etc/yum.repos.d/google-chrome.repo << 'EOF'
+    [google-chrome]
+    name=google-chrome
+    baseurl=https://dl.google.com/linux/chrome/rpm/stable/x86_64
+    enabled=1
+    gpgcheck=1
+    gpgkey=https://dl.google.com/linux/linux_signing_key.pub
+    EOF
+
+    rpm-ostree install google-chrome-stable
